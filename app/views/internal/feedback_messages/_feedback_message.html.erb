@@ -193,7 +193,6 @@
      .then(response => response.json()
                                .then(json => {
                                  if (json.outcome === 'Success') {
-                                   console.log(json.outcome)
                                    statusBtn.innerText = "Saved!";
                                    setTimeout(function () {
                                      statusBtn.innerText = "Save Status"
@@ -262,13 +261,11 @@
                                  if (json.outcome === "Success") {
                                    successfulEmail(alert);
                                  } else {
-                                   console.log('email failed')
                                    failedEmail(alert);
                                  }
                                }))
      .catch(error => {
        failedEmail(alert);
-       console.log(error);
      })
  }
 
@@ -336,7 +333,7 @@
                                      })
                                      .catch(error => {
                                        // failedNote();
-                                       console.log(error);
+                                       Honeybadger.notify(error);
                                      }))
  }
 
